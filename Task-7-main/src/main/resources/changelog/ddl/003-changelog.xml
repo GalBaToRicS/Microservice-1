@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="003" author="galba" dbms="postgresql">
+        <sql>
+            CREATE TABLE "public"."role"
+            (
+                "id"   bigint DEFAULT nextval('role_id_seq') NOT NULL,
+                "name" character varying(255),
+                CONSTRAINT "role_pkey" PRIMARY KEY ("id")
+            ) WITH (oids = false);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

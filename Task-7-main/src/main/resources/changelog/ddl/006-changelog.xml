@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="006" author="galba" dbms="postgresql">
+        <sql>
+            DROP TABLE IF EXISTS "black_list";
+            DROP SEQUENCE IF EXISTS black_list_id_seq1;
+            CREATE SEQUENCE black_list_id_seq1 INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1;
+
+            CREATE TABLE "public"."black_list"
+            (
+                "exp"      timestamp(6)                                 NOT NULL,
+                "id"       bigint DEFAULT nextval('black_list_id_seq1') NOT NULL,
+                "token"    character varying(255)                       NOT NULL,
+                "username" character varying(255)                       NOT NULL,
+                CONSTRAINT "black_list_pkey" PRIMARY KEY ("id")
+            ) WITH (oids = false);
+
+            TRUNCATE "black_list";
+        </sql>
+    </changeSet>
+</databaseChangeLog>

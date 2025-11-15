@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="005" author="galba" dbms="postgresql">
+        <sql>
+            CREATE TABLE "public"."users"
+            (
+                "id"            bigint DEFAULT nextval('users_id_seq') NOT NULL,
+                "login"         character varying(255),
+                "password_hash" character varying(255),
+                CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+            ) WITH (oids = false);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
